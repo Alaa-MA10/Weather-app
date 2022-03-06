@@ -17,7 +17,7 @@ export class WeatherService {
 
   getWeatherByCity(city:string):Observable<any>{
     // let params = new HttpParams().set('q',city).set('appid', this.apiKey)
-    let params = new HttpParams().set('q',city)
+    let params = new HttpParams().set('q',city).set('units','metric')
     return this.http.get<ICity>(`${env.WETHER_BASE_URL}`, {params})
   }
 

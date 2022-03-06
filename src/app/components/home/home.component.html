@@ -1,5 +1,5 @@
 <mat-toolbar color="primary"> My Weather App </mat-toolbar>
-<div class="content">
+<div class="content select-container">
   <div class="flex-row">
     <mat-form-field class="mr">
       <mat-label>Select country</mat-label>
@@ -13,6 +13,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    
     <mat-form-field>
       <mat-label>Select city</mat-label>
       <mat-select [(ngModel)]="selectedCity" (selectionChange)="openWeatherDetails($event)">
@@ -24,5 +25,5 @@
   </div>
 
   <br />
-  <router-outlet></router-outlet>
+  <!-- <router-outlet></router-outlet> -->
 </div>
