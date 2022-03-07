@@ -1,9 +1,10 @@
 <div class="container">
   <app-home></app-home>
   <!-- *ngIf ensures that the card won’t be shown if there is no data -->
+  <!-- *ngIf="weatherData$ | async as weatherData" -->
   <mat-card
     class="mat-elevation-z5"
-    *ngIf="weatherData$ | async as weatherData"
+    *ngIf="weatherData"
   >
     <!-- progress-bar -->
     <mat-progress-bar *ngIf="loading" mode="indeterminate" class="top-bar">
@@ -16,7 +17,8 @@
     <mat-card-content>
       <div class="flex-row">
         <div class="outlook">
-          <img src="{{ getIcon(weatherData.weather[0].icon) }}" /><br />
+          <!-- <img src="{{ getIcon(weatherData.weather[0].icon) }}" /><br /> -->
+          <img src="{{ weatherData.image}}" /><br />
           <span class="big-text"
             >{{ weatherData.main.temp | number: "0.0-0" }} C</span
           ><br />
@@ -34,6 +36,7 @@
           </div>
         </div>
       </div>
+      <!-- <span>{{weatherData.coord.lat}}</span> -->
     </mat-card-content>
   </mat-card>
 </div>

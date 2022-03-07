@@ -1,7 +1,12 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import {
+  HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
+} from '@angular/common/http';
 
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpHeadersInterceptor implements HttpInterceptor {
@@ -14,9 +19,11 @@ export class HttpHeadersInterceptor implements HttpInterceptor {
     req = req.clone({
       setParams: {
         appid: '8a3dbaa7b4dc762d7af1d677b06c42e4',
-      }
+        units: 'metric',
+      },
+      // params: req.params.delete('useAuth'),
     });
+
     return next.handle(req);
   }
-
 }

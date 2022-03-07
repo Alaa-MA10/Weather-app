@@ -6,7 +6,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { delay, map, Observable } from 'rxjs';
 
 import { environment as env } from 'src/environments/environment';
-import { ICity } from 'country-state-city/dist/lib/interface';
+import { IForecast } from '../interfaces/ForecastData';
+import { IWeather } from '../interfaces/WeatherData';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +15,26 @@ import { ICity } from 'country-state-city/dist/lib/interface';
 export class WeatherService {
   constructor(private http: HttpClient) {}
 
-  getWeatherByCity(city: string): Observable<any> {
-    // let params = new HttpParams().set('q',city).set('appid', this.apiKey)
-    let params = new HttpParams().set('q', city).set('units', 'metric');
+  getWeatherByCity(city: string): Observable<IWeather> {
+    let params = new HttpParams().set('q', city);
 
-    return this.http.get(`${env.WETHER_BASE_URL}`, { params }).pipe(delay(500))
+    return this.http.get<IWeather>(`${env.WETHER_BASE_URL}`, { params }).pipe(
+      // Adding the weather icon with RxJS Map
+      map((data) => ({
+        ...data,
+        image: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+      }))
+    );
   }
 
+  getForecastByCoord(lat: number, lon: number): Observable<IForecast> {
+    let params = new HttpParams()
+      .set('lat', lat)
+      .set('lon', lon)
+      .set('exclude', 'hourly,minutely,alert');
+
+    return this.http.get<IForecast>(`${env.FORECAST_BASE_URL}`, { params });
+  }
 
   getWeatherByCoord(lat: any, lon: any) {
     let params = new HttpParams().set('lat', lat).set('lon', lon);
