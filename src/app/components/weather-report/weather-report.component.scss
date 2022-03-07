@@ -10,9 +10,14 @@
     top: 0;
 }
 
+.container{
+    width: 100%;
+}
 mat-card {
     width: 250px;
-    margin-top: 20vh;
+    margin: auto;
+    text-align: center;
+    font-family: 'Carter One', cursive;
 }
 
 mat-card::ng-deep.mat-card-header-text {
@@ -22,6 +27,8 @@ mat-card::ng-deep.mat-card-header-text {
 .flex-row {
     display: flex;
     flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
 
     > div {
         flex: 50%;
@@ -31,17 +38,29 @@ mat-card::ng-deep.mat-card-header-text {
 
     > .outlook {
         color: black;
-        background: rgba(0, 0, 0, 0.1);
+        // background: rgba(0, 0, 0, 0.1);
+        margin: auto;
+        font-family: 'Carter One', cursive;
+        font-weight: 400;
+
+        > img{
+            width: 50%;
+        }
     }
 
     > .temp {
-        background: lightblue;
+        background: rgba(0, 0, 0, 0.1);
         color: black;
         margin-right: 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
+         > div{
+             display: flex;
+            justify-content: flex-start;
+        }
     }
 
     .big-text {

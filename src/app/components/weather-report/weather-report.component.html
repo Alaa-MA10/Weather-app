@@ -1,19 +1,39 @@
-<!-- *ngIf ensures that the card won’t be shown if there is no data -->
-<mat-card class="mat-elevation-z5" *ngIf="weatherData$ | async as weatherData">
-  <mat-card-header>
-    <mat-card-title>{{ weatherData.name }}'s weather</mat-card-title>
-    <mat-card-subtitle>Today: {{today | date }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="flex-row">
-      <div class="temp">
-        <span class="big-text">{{ weatherData.main.temp | number: "0.0-0" }} C</span>
-        <span>Feels like </span>
-        <span>{{ weatherData.main.feels_like | number: "0.0-0" }} C</span>
+<div class="container">
+  <app-home></app-home>
+  <!-- *ngIf ensures that the card won’t be shown if there is no data -->
+  <mat-card
+    class="mat-elevation-z5"
+    *ngIf="weatherData$ | async as weatherData"
+  >
+    <!-- progress-bar -->
+    <mat-progress-bar *ngIf="loading" mode="indeterminate" class="top-bar">
+    </mat-progress-bar>
+    <!-- Card -->
+    <mat-card-header>
+      <mat-card-title>{{ weatherData.name }}'s weather</mat-card-title>
+      <mat-card-subtitle>Today: {{ today | date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex-row">
+        <div class="outlook">
+          <img src="{{ getIcon(weatherData.weather[0].icon) }}" /><br />
+          <span class="big-text"
+            >{{ weatherData.main.temp | number: "0.0-0" }} C</span
+          ><br />
+          <span>{{ weatherData.weather[0].description | titlecase }}</span>
+        </div>
       </div>
-      <div class="outlook">
-        <span>{{ weatherData.weather[0].description | titlecase }}</span>
+      <mat-divider></mat-divider>
+      <div class="flex-row">
+        <div class="temp">
+          <span>Feels like </span>
+          <span>{{ weatherData.main.feels_like | number: "0.0-0" }} C</span>
+          <div>
+            <span> Min {{ weatherData.main.temp_min | number: "0.0-0" }}C</span>
+            <span>Max {{ weatherData.main.temp_max | number: "0.0-0" }}C</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

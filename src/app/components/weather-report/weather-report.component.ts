@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { concatMap, filter, map, Observable } from 'rxjs';
+import { concatMap, filter, map, Observable, tap } from 'rxjs';
 import { WeatherService } from './../../services/weather.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class WeatherReportComponent implements OnInit {
   // $ -> indicate that the variable is an Observable
   weatherData$!: Observable<any>;
   today:Date = new Date()
+  loading = false;
   
   constructor(private weatherServices: WeatherService, private route:ActivatedRoute) { }
 
@@ -28,13 +29,23 @@ export class WeatherReportComponent implements OnInit {
       // 2. Check if the parameter has some value
       // Use the filter operator to check if we have a valid-value(use the double !!)
       filter(name => !!name),
+      // tap “side effect” in observable pipeline
+      tap(() => {
+        this.loading = true;
+      }),
       // 3. Call weather-service function for this value
       // Use a concatMap operator to append or concatenate service function (which also is an observable)
-      concatMap(name => this.weatherServices.getWeatherByCity(name))
+      concatMap(name => this.weatherServices.getWeatherByCity(name)),
+      tap(()=>{
+        this.loading = false
+      })
     );
-    
-    console.log('', this.weatherServices.getWeatherByCity('cairo'))
-    console.log('typeof data$: ', typeof this.weatherData$)
+
+  }
+
+  getIcon(icon:string){
+    // console.log(this.weatherServices.getWeatherIcon(icon).pipe())
+    return `http://openweathermap.org/img/wn/${icon}@2x.png`
   }
 
   getLocation(){

@@ -10,6 +10,9 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card'
+import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatDividerModule} from '@angular/material/divider'
+import { MatTableModule } from '@angular/material/table'  
 
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { WeatherReportComponent } from './components/weather-report/weather-report.component'
@@ -26,6 +29,10 @@ import { HomeComponent } from './components/home/home.component';
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
+    MatProgressBarModule,
+    MatDividerModule,
+    MatTableModule,
+
     FormsModule,
   ReactiveFormsModule,
 

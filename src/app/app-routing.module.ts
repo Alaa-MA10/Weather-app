@@ -6,7 +6,7 @@ import { WeatherReportComponent } from './components/weather-report/weather-repo
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    component: WeatherReportComponent
   },
   {
     path: ":cityName",
