@@ -5,17 +5,17 @@ import { WeatherReportComponent } from './components/weather-report/weather-repo
 
 const routes: Routes = [
   {
-    path: "",
-    component: WeatherReportComponent
+    path: '',
+    component: WeatherReportComponent,
   },
   {
-    path: ":cityName",
-    component: WeatherReportComponent
-  }
+    path: ':countryCode/:cityName',
+    component: WeatherReportComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

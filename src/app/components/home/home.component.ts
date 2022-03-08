@@ -1,28 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable, Subject, Subscription, takeUntil } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { Country, State, City } from 'country-state-city';
+import { Country, City } from 'country-state-city';
 // Import Interfaces`
 import { ICountry, ICity } from 'country-state-city/dist/lib/interface';
-// import { ICountry, IState, ICity } from 'country-state-city';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   title = 'weather-app';
 
-  cities!: ICity[] | any;
+  cities?: ICity[];
   countries!: ICountry[];
 
   countryCode!: string;
 
-  selectedCountry!: string;
-  selectedCity!: string;
+  selectCountry!: string;
+  selectCity!: string;
 
   constructor(private router: Router) {}
 
@@ -30,21 +27,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.countries = Country.getAllCountries();
   }
 
-  onChange(e: any) {
-    console.log('onChange(): ', this.selectedCountry);
-    console.log('cities: ', City.getCitiesOfCountry(this.selectedCountry));
-    this.cities = City.getCitiesOfCountry(this.selectedCountry);
+  onChange() {
+    console.log('onChange(): ', this.selectCountry);
+
+    console.log('cities: ', City.getCitiesOfCountry(this.selectCountry));
+    this.cities = City.getCitiesOfCountry(this.selectCountry);
   }
 
-  openWeatherDetails(e:any){
-    // console.log('this.selectedCity:',this.selectedCity)
-    // console.log('Open() e: ', e.value)
-
-      this.router.navigate([this.selectedCity]);
-  }
-
-  ngOnDestroy() {
-    // this.unsubscribe$.next();
-    // this.unsubscribe$.complete();
+  openWeatherDetails() {
+    this.router.navigate([this.selectCountry, this.selectCity]);
   }
 }

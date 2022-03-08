@@ -1,14 +1,20 @@
-.mat-toolbar{
-    font-family: 'Carter One', cursive;
+.logo {
+  font-family: "Carter One", cursive;
+  margin-left: 1.5rem;
+  cursor: pointer;
+
+//   :hover{
+//       opacity: 0.1;
+//       color: gray;
+//   }
 }
 
-.content{
-    // padding: 1rem;
-    display: flex;
-    justify-content: center;
+.content {
+  // padding: 1rem;
+  display: flex;
+  justify-content: center;
 
-    mat-form-field{
-        margin: 1rem;
-    }
-
+  mat-form-field {
+    margin: 1rem;
+  }
 }

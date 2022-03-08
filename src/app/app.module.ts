@@ -17,6 +17,8 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatDividerModule} from '@angular/material/divider'
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { WeatherReportComponent } from './components/weather-report/weather-report.component'
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
@@ -37,6 +39,8 @@ import { HomeComponent } from './components/home/home.component';
     FlexLayoutModule,
     MatGridListModule,
     MatIconModule,
+
+    FontAwesomeModule,
 
     FormsModule,
   ReactiveFormsModule,

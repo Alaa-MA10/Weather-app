@@ -11,6 +11,7 @@
       <mat-card-content>
         <mat-card-header>
           <mat-card-title>{{ weatherData.name }}'s weather</mat-card-title>
+          <mat-card-subtitle>{{ countryName }}</mat-card-subtitle>
           <mat-card-subtitle>Today: {{ today | date }}</mat-card-subtitle>
         </mat-card-header>
 
@@ -32,25 +33,27 @@
         </div>
         <br />
         <div class="outlook">
-          <p>Min {{ weatherData.main.temp_min | number: "0.0-0" }}°</p>
+          <p>Min: {{ weatherData.main.temp_min | number: "0.0-0" }}°</p>
 
-          <p>Max {{ weatherData.main.temp_max | number: "0.0-0" }}°</p>
+          <p>Max: {{ weatherData.main.temp_max | number: "0.0-0" }}°</p>
 
           <p>
-            <mat-icon>opacity</mat-icon>Humidity
+            <mat-icon>opacity</mat-icon>Humidity:
             {{ weatherData.main.humidity | number: "0.0-0" }}%
           </p>
 
           <p>
-            <mat-icon>unfold_less</mat-icon> pressure
-            {{ weatherData.main.pressure | number: "0.0-0" }}mb
+            <mat-icon>unfold_less</mat-icon> pressure:
+            {{ weatherData.main.pressure | number: "0.0-0" }} mb
           </p>
 
-          <p>Wind {{ weatherData.wind.speed | number: "0.0-0" }}km/h</p>
           <p>
-            <mat-icon>arrow_upward</mat-icon> Sunrise:{{
-              getDate(weatherData.sys.sunrise) | date: "hh:mm a"
-            }}
+            <i class="fa-solid fa-wind"></i> Wind:
+            {{ weatherData.wind.speed | number: "0.0-0" }} km/h
+          </p>
+          <p>
+            <mat-icon>arrow_upward</mat-icon> Sunrise:
+            {{ getDate(weatherData.sys.sunrise) | date: "hh:mm a" }}
           </p>
           <p>
             <mat-icon>arrow_downward</mat-icon>
@@ -76,9 +79,7 @@
         >
           <mat-card class="mat-elevation-z4">
             <mat-card-header>
-              <mat-card-title>{{
-                getDate(day.dt) | date: "EEE"
-              }}</mat-card-title>
+              <mat-card-title>{{ getDate(day.dt) | date: "E" }}</mat-card-title>
               <mat-card-subtitle>{{
                 getDate(day.dt) | date: "dd MMM"
               }}</mat-card-subtitle>

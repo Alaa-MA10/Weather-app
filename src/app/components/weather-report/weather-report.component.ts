@@ -17,6 +17,7 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
   weather: any;
 
   cityName!: string;
+  countryCode!: string;
   countryName?: string;
   // $ -> indicate that the variable is an Observable
   weatherData$!: Observable<IWeather>;
@@ -55,14 +56,20 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
     //   })
     // );
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
+      console.log(params);
+      this.countryCode = params['countryCode'];
       this.cityName = params['cityName'];
-      this.getWeatherData(this.cityName);
+      // if there a selected city
+      if (this.cityName) {
+        this.getWeatherData(this.cityName);
+        this.countryName = Country.getCountryByCode(this.countryCode)?.name;
+      }
     });
 
     // date converting
-    let day = new Date(1646647200 * 1000);
-    console.log('convert date: ', day.toLocaleString().split(',')[0]);
-    console.log('convert day: ', day.toLocaleString('en', { weekday: 'long' }));
+    // let day = new Date(1646647200 * 1000);
+    // console.log('convert date: ', day.toLocaleString().split(',')[0]);
+    // console.log('convert day: ', day.toLocaleString('en', { weekday: 'long' }));
   }
 
   getWeatherData(cityName: string): void {
@@ -74,9 +81,7 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
         this.lon = this.weatherData.coord.lon;
         console.log('weatherData: ', this.weatherData);
         // console.log('Country: ', Country.getCountryByCode(this.weatherData.sys.country))
-        this.countryName = Country.getCountryByCode(
-          this.weatherData.sys.country
-        )?.name;
+
         // console.log('this.country: ', this.countryName);
         this.getForecast(this.lat, this.lon);
       });
@@ -92,9 +97,9 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
     // console.log('getforecast(): ', this.weatherServices.getForecastByCoord())
   }
 
-  getDate(dt:number):Date{
+  getDate(dt: number): Date {
     let date = new Date(dt * 1000);
-    return date
+    return date;
     // return day.toLocaleString('en-GB', {dateStyle:'short'})
     // return day.toLocaleString().split(',')[0]
   }

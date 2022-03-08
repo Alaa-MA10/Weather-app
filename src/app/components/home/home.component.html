@@ -1,11 +1,14 @@
-<mat-toolbar color="primary"> Weather App </mat-toolbar>
+<mat-toolbar color="primary"
+  ><span class="logo" routerLink="/" title="Home">Weather App</span>
+</mat-toolbar>
 <div class="content">
-  <div fxLayout="row wrap" layout-align="center center">
+  <div fxLayout="row wrap" layout-align="center center" *ngIf="countries">
     <mat-form-field>
       <mat-label>Select country</mat-label>
       <mat-select
-        [(ngModel)]="selectedCountry"
-        (selectionChange)="onChange($event)"
+        [(ngModel)]="selectCountry"
+        name="selectCountry"
+        (selectionChange)="onChange()"
       >
         <mat-option *ngFor="let country of countries" [value]="country.isoCode">
           {{ country.name }}
@@ -13,11 +16,12 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field *ngIf="cities">
       <mat-label>Select city</mat-label>
       <mat-select
-        [(ngModel)]="selectedCity"
-        (selectionChange)="openWeatherDetails($event)"
+        [(ngModel)]="selectCity"
+        name="selectCity"
+        (selectionChange)="openWeatherDetails()"
       >
         <mat-option *ngFor="let city of cities" [value]="city.name">
           {{ city.name }}
