@@ -1,7 +1,7 @@
 <mat-toolbar color="primary"> Weather App </mat-toolbar>
-<div class="content select-container">
-  <div class="flex-row">
-    <mat-form-field class="mr">
+<div class="content">
+  <div fxLayout="row wrap" layout-align="center center">
+    <mat-form-field>
       <mat-label>Select country</mat-label>
       <mat-select
         [(ngModel)]="selectedCountry"
@@ -27,5 +27,4 @@
   </div>
 
   <br />
-  <!-- <router-outlet></router-outlet> -->
 </div>

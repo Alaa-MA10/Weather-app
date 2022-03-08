@@ -72,12 +72,12 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
         this.weatherData = data;
         this.lat = this.weatherData.coord.lat;
         this.lon = this.weatherData.coord.lon;
-        console.log('weather: ', this.weatherData);
+        console.log('weatherData: ', this.weatherData);
         // console.log('Country: ', Country.getCountryByCode(this.weatherData.sys.country))
         this.countryName = Country.getCountryByCode(
           this.weatherData.sys.country
         )?.name;
-        console.log('this.country: ', this.countryName);
+        // console.log('this.country: ', this.countryName);
         this.getForecast(this.lat, this.lon);
       });
   }
@@ -87,9 +87,16 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
       .getForecastByCoord(lat, lon)
       .subscribe((data) => {
         this.forecastData = data;
-        console.log('weatherData: ', this.forecastData);
+        console.log('forecastData: ', this.forecastData);
       });
     // console.log('getforecast(): ', this.weatherServices.getForecastByCoord())
+  }
+
+  getDate(dt:number):Date{
+    let date = new Date(dt * 1000);
+    return date
+    // return day.toLocaleString('en-GB', {dateStyle:'short'})
+    // return day.toLocaleString().split(',')[0]
   }
 
   getLocation() {

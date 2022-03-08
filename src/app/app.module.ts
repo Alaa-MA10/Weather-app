@@ -10,7 +10,10 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card'
+import {MatGridListModule} from '@angular/material/grid-list'
 import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatIconModule} from '@angular/material/icon'
+
 import {MatDividerModule} from '@angular/material/divider'
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -32,6 +35,8 @@ import { HomeComponent } from './components/home/home.component';
     MatProgressBarModule,
     MatDividerModule,
     FlexLayoutModule,
+    MatGridListModule,
+    MatIconModule,
 
     FormsModule,
   ReactiveFormsModule,
