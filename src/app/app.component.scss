@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Roboto&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Bree+Serif&family=Roboto&display=swap');
 
 .content {
     text-align: center;
     padding-top: 10px;
+    font-family: 'Roboto', sans-serif;
+
 }
 
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.mr {
-    margin-right: 16px;
-}
+// .flex-row {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+// }

@@ -6,11 +6,11 @@ import { Country, City } from 'country-state-city';
 import { ICountry, ICity } from 'country-state-city/dist/lib/interface';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-select-country-city',
+  templateUrl: './select-country-city.component.html',
+  styleUrls: ['./select-country-city.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class SelectCountryCityComponent implements OnInit {
   title = 'weather-app';
 
   cities?: ICity[];

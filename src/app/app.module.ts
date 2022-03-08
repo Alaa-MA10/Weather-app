@@ -22,12 +22,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { WeatherReportComponent } from './components/weather-report/weather-report.component'
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
-import { HomeComponent } from './components/home/home.component';
+import { SelectCountryCityComponent } from './components/select-country-city/select-country-city.component';
 @NgModule({
   declarations: [
     AppComponent,
     WeatherReportComponent,
-    HomeComponent,
+    SelectCountryCityComponent,
   ],
   imports: [
     MatToolbarModule,

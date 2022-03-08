@@ -15,7 +15,7 @@
 
 mat-card::ng-deep.mat-card-header-text {
   width: 100%;
-  font-family: "Carter One", cursive;
+  font-family: "Acme", sans-serif;
 }
 
 .weather-card {
@@ -34,7 +34,7 @@ mat-card::ng-deep.mat-card-header-text {
     color: black;
     // background: rgba(0, 0, 0, 0.1);
     margin: auto;
-    font-family: "Carter One", cursive;
+    font-family: "Acme", sans-serif;
     font-weight: 400;
     // img {
     //   width: 10%;
@@ -75,13 +75,14 @@ mat-card::ng-deep.mat-card-header-text {
   padding: 16px;
   border-radius: 15px;
   text-align: center;
-  font-family: "Carter One", cursive;
-
+  // justify-content: center;
+  // font-family: 'Bree Serif', serif;
   mat-card-title {
     width: 100%;
-    font-family: "Carter One", cursive;
+    font-family: "Acme", sans-serif;
+    font-weight: 700;
     text-align: left;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
   }
   .big-text {
     font-size: 20px;
