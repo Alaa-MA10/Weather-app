@@ -28,9 +28,9 @@ export class SelectCountryCityComponent implements OnInit {
   }
 
   onChange() {
-    console.log('onChange(): ', this.selectCountry);
+    // console.log('onChange(): ', this.selectCountry);
 
-    console.log('cities: ', City.getCitiesOfCountry(this.selectCountry));
+    // console.log('cities: ', City.getCitiesOfCountry(this.selectCountry));
     this.cities = City.getCitiesOfCountry(this.selectCountry);
   }
 

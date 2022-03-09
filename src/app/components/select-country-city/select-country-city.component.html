@@ -11,7 +11,7 @@
         (selectionChange)="onChange()"
       >
         <mat-option *ngFor="let country of countries" [value]="country.isoCode">
-          {{ country.name }}
+          {{ country.name }} ({{country.isoCode}})
         </mat-option>
       </mat-select>
     </mat-form-field>
