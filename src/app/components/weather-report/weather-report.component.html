@@ -4,56 +4,66 @@
   <div fxLayout="row wrap" fxLayoutGap="16px">
     <!-- Weather Card -->
     <mat-card class="mat-elevation-z5 weather-card" *ngIf="weatherData">
-      <!-- progress-bar -->
+      <!-- progress-bar
       <mat-progress-bar *ngIf="loading" mode="indeterminate" class="top-bar">
-      </mat-progress-bar>
+      </mat-progress-bar> -->
       <mat-card-content>
-        <mat-card-header>
+        <mat-card-header class="weather-card-header">
           <mat-card-title>{{ weatherData.name }}'s weather</mat-card-title>
           <mat-card-subtitle>{{ countryName }}</mat-card-subtitle>
           <mat-card-subtitle>Today: {{ today | date }}</mat-card-subtitle>
         </mat-card-header>
-        <div class="outlook">
+        <div class="temp">
           <img mat-card-lg-image src="{{ weatherData.image }}" /><br />
-          <p class="big-text">{{ weatherData.main.temp | number: "0.0-0" }}°</p>
+          <p class="big-text">
+            <mat-icon>thermostat</mat-icon>
+            {{ weatherData.main.temp | number: "0.0-0" }}°
+          </p>
           <span>{{ weatherData.weather[0].description | titlecase }}</span>
         </div>
       </mat-card-content>
       <mat-card-content>
-        <div>
+        <div class="temp">
           <p class="big-text">
+            <mat-icon>thermostat</mat-icon>
             {{ weatherData.main.feels_like | number: "0.0-0" }}°
           </p>
-          <small> Feels like</small>
+          <p> Feels like</p>
         </div>
         <br />
         <div class="outlook">
-          <p>Min: {{ weatherData.main.temp_min | number: "0.0-0" }}°</p>
-
-          <p>Max: {{ weatherData.main.temp_max | number: "0.0-0" }}°</p>
-
           <p>
-            <mat-icon>opacity</mat-icon>Humidity:
-            {{ weatherData.main.humidity | number: "0.0-0" }}%
+            <mat-icon>expand_more</mat-icon> Min: <span>
+            {{ weatherData.main.temp_min | number: "0.0-0" }}°</span>
           </p>
 
           <p>
-            <mat-icon>unfold_less</mat-icon> pressure:
-            {{ weatherData.main.pressure | number: "0.0-0" }} mb
+            <mat-icon>expand_less</mat-icon> Max: <span>
+            {{ weatherData.main.temp_max | number: "0.0-0" }}°</span>
           </p>
 
           <p>
-            <i class="fa-solid fa-wind"></i> Wind:
-            {{ weatherData.wind.speed | number: "0.0-0" }} km/h
+            <mat-icon>opacity</mat-icon>Humidity: <span>
+            {{ weatherData.main.humidity | number: "0.0-0" }}%</span>
+          </p>
+
+          <p>
+            <mat-icon>unfold_less</mat-icon> pressure:<span>
+            {{ weatherData.main.pressure | number: "0.0-0" }} mb</span>
+          </p>
+
+          <p>
+            <mat-icon>air</mat-icon> Wind:<span>
+            {{ weatherData.wind.speed | number: "0.0-0" }} km/h</span>
           </p>
           <p>
-            <mat-icon>arrow_upward</mat-icon> Sunrise:
-            {{ getDate(weatherData.sys.sunrise) | date: "hh:mm a" }}
+            <mat-icon>brightness_7</mat-icon> Sunrise:<span>
+            {{ getDate(weatherData.sys.sunrise) | date: "hh:mm a" }}</span>
           </p>
           <p>
-            <mat-icon>arrow_downward</mat-icon>
-            Sunset:
-            {{ getDate(weatherData.sys.sunset) | date: "hh:mm a" }}
+            <mat-icon>brightness_4</mat-icon>
+            Sunset:<span>
+            {{ getDate(weatherData.sys.sunset) | date: "hh:mm a" }}</span>
           </p>
         </div>
       </mat-card-content>
@@ -61,35 +71,5 @@
     <!-- End Card -->
   </div>
 
-  <!-- Forecast Cards -->
-  <mat-card class="daily-forecast" *ngIf="forecastData">
-    <mat-card-title>Daily Forecast</mat-card-title>
-    <mat-card-content>
-      <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div
-          fxFlex="{{ 100 / 7 }}%"
-          fxFlex.xs="50%"
-          fxFlex.sm="33%"
-          *ngFor="let day of forecastData.daily | slice: 1"
-        >
-          <mat-card class="mat-elevation-z4 day-forecast-card">
-            <mat-card-header>
-              <mat-card-title>{{ getDate(day.dt) | date: "E" }}</mat-card-title>
-              <mat-card-subtitle>{{
-                getDate(day.dt) | date: "dd MMM"
-              }}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content class="temp">
-              <img src="{{ day.image }}" /><br />
-
-              <p class="big-text">{{ day.temp.day | number: "0.0-0" }}°</p>
-              <p>{{ day.temp.night | number: "0.0-0" }}°</p>
-              <span>{{ day.weather[0].description | titlecase }}</span>
-            </mat-card-content>
-          </mat-card>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <!-- End Forecast Cards -->
+  <app-forecast-report [forecastData]=forecastData></app-forecast-report>
 </div>

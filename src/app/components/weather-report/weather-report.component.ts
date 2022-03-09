@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { concatMap, filter, map, Observable, Subscription, tap } from 'rxjs';
 import { WeatherService } from './../../services/weather.service';
@@ -12,8 +12,8 @@ import { Country } from 'country-state-city';
   styleUrls: ['./weather-report.component.scss'],
 })
 export class WeatherReportComponent implements OnInit, OnDestroy {
-  lat: any;
-  lon: any;
+  lat!: number;
+  lon!: number;
   weather: any;
 
   cityName!: string;

@@ -1,5 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-misty-blue: #c3ceda;
+  --color-blue-gray: #738fa7;
+  --color-blue-gray-lighter: #e3e8ed;
+  --color-midnight-blue: #0c4160;
+  --color-dark-blue: #071330;
+  --color-white: #fff;
+}
 
+* {
+  font-size: 14px;
+  color: var(--color-midnight-blue);
+}
 html,
 body {
   height: 100%;
@@ -7,5 +19,5 @@ body {
 body {
   margin: 0;
   font-family: "League Spartan", sans-serif;
-  background-color: rgb(221, 221, 221);
+  background-color: var(--color-blue-gray-lighter);
 }

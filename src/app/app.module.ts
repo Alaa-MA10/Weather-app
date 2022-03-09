@@ -23,11 +23,13 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { WeatherReportComponent } from './components/weather-report/weather-report.component'
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 import { SelectCountryCityComponent } from './components/select-country-city/select-country-city.component';
+import { ForecastReportComponent } from './forecast-report/forecast-report.component';
 @NgModule({
   declarations: [
     AppComponent,
     WeatherReportComponent,
     SelectCountryCityComponent,
+    ForecastReportComponent,
   ],
   imports: [
     MatToolbarModule,
