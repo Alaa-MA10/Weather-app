@@ -57,7 +57,7 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
         this.weatherData = data;
         this.lat = this.weatherData.coord.lat;
         this.lon = this.weatherData.coord.lon;
-        // console.log('weatherData: ', this.weatherData);
+        console.log('weatherData: ', this.weatherData);
         // console.log('Country: ', Country.getCountryByCode(this.weatherData.sys.country))
         // console.log('this.country: ', this.countryName);
         this.getForecast(this.lat, this.lon);

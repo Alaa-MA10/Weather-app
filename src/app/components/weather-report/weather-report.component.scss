@@ -21,12 +21,13 @@
   background: linear-gradient(var(--color-misty-blue), var(--color-blue-gray));
 
   ::ng-deep.mat-card-title {
+    margin-bottom: 1.5rem;
     color: var(--color-white);
     font-family: "Acme", sans-serif;
     font-weight: 600;
     font-size: 2.5rem;
     letter-spacing: 1px;
-    margin-bottom: 1.5rem;
+    line-height: 2.5rem;
   }
   .mat-card-subtitle {
     color: var(--color-cyan-blue-dark);
