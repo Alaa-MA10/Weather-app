@@ -1,24 +1,23 @@
-mat-toolbar{
+mat-toolbar {
   background-color: var(--color-blue-gray);
-}
-.logo {
-  font-family: 'Acme', sans-serif;
-  font-size: 2rem;
-  margin-left: 1.5rem;
-  cursor: pointer;
-  color: var(--color-white);
+  
+  .logo {
+    font-family: "Acme", sans-serif;
+    font-size: 2rem;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    color: var(--color-white);
 
-  &:hover{
+    &:hover {
       opacity: 0.7;
+    }
   }
 }
-
 .content {
   display: flex;
   justify-content: center;
-  
-  ::ng-deep .mat-form-field{
+
+  ::ng-deep .mat-form-field {
     margin: 1rem;
-    
   }
 }

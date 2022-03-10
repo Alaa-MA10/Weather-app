@@ -1,8 +1,5 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 import { IForecast } from '../interfaces/ForecastData';
-import { WeatherService } from '../services/weather.service';
 
 @Component({
   selector: 'app-forecast-report',

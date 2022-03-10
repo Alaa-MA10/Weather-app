@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Country, City } from 'country-state-city';
-// Import Interfaces`
+// Import Interfaces
 import { ICountry, ICity } from 'country-state-city/dist/lib/interface';
 
 @Component({
@@ -29,7 +29,6 @@ export class SelectCountryCityComponent implements OnInit {
 
   onChange() {
     // console.log('onChange(): ', this.selectCountry);
-
     // console.log('cities: ', City.getCitiesOfCountry(this.selectCountry));
     this.cities = City.getCitiesOfCountry(this.selectCountry);
   }

@@ -1,46 +1,55 @@
-.temp {
-    + .big-text,::ng-deep .mat-icon{
-      font-size: 2rem;
-      color: #d4a359;
-  
-    }
-    span {
-      margin-top: 1rem;
-      // color: #09344c;
-    }
-  }
-  .big-text {
+.daily-forecast {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 15px;
+  text-align: center;
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 600;
+  background-color: #f1f3f6;
+
+  > mat-card-title {
+    margin: 0.5rem 0 1.5rem;
+    text-align: left;
+
     font-family: "Acme", sans-serif;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #d4a359;
+    font-weight: 700;
   }
-  
-  .daily-forecast {
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 15px;
-    text-align: center;
-    font-family: "Fjalla One", sans-serif;
-    font-weight: 600;
-    background-color: #f1f3f6 ;
-    
-  
-    > mat-card-title {
-      // color: #0a3a56;
-      text-align: left;
-      font-family: "Acme", sans-serif;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .day-forecast-card {
-      background: linear-gradient(var(--color-misty-blue), var(--color-blue-gray));
-      > mat-card-header {
+
+  .day-forecast-card {
+    background: linear-gradient(
+      var(--color-blue-gray-darker),
+      var(--color-misty-blue)
+    );
+
+    > mat-card-header {
+      margin-bottom: -2.1rem;
+      justify-content: center;
+
+      mat-card-title,
+      mat-card-subtitle {
+        color: var(--color-white);
         font-family: "Bree Serif", serif;
         font-weight: 500;
-        justify-content: center;
-        margin-bottom: -2.1rem;
       }
-      
     }
   }
+}
+
+.temp {
+  font-family: "Bree Serif", serif;
+  letter-spacing: 0.5px;
+  + .big-text,
+  ::ng-deep .mat-icon {
+    font-size: 2rem;
+    color: var(--color-yellow-freesia);
+  }
+  span {
+    margin-top: 1rem;
+  }
+}
+.big-text {
+  font-family: "Acme", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--color-yellow-freesia);
+}

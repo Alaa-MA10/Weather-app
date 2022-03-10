@@ -34,17 +34,16 @@ export class WeatherService {
       .set('lon', lon)
       .set('exclude', 'hourly,minutely,alert');
 
-      // let path = this.http.get(`${env.FORECAST_BASE_URL}`, { params }).pipe(map( (res)=>{
-      //   console.log('path res:', res)
-      // }))
-
     return this.http
-      .get<IForecast>(`${env.FORECAST_BASE_URL}`, { params }).pipe(map( (data:IForecast)=>{
-        data.daily.forEach((d:Daily)=>{
-          d.image = `http://openweathermap.org/img/wn/${d.weather[0].icon}@2x.png`
+      .get<IForecast>(`${env.FORECAST_BASE_URL}`, { params })
+      .pipe(
+        map((data: IForecast) => {
+          data.daily.forEach((d: Daily) => {
+            d.image = `http://openweathermap.org/img/wn/${d.weather[0].icon}@2x.png`;
+          });
+          return data;
         })
-        return data
-      }))
+      );
   }
 
   getWeatherByCoord(lat: any, lon: any) {

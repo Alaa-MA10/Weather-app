@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { concatMap, filter, map, Observable, Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { WeatherService } from './../../services/weather.service';
 import { IWeather } from './../../interfaces/WeatherData';
 import { IForecast } from './../../interfaces/ForecastData';
@@ -14,16 +14,17 @@ import { Country } from 'country-state-city';
 export class WeatherReportComponent implements OnInit, OnDestroy {
   lat!: number;
   lon!: number;
-  weather: any;
 
   cityName!: string;
   countryCode!: string;
   countryName?: string;
   // $ -> indicate that the variable is an Observable
-  weatherData$!: Observable<IWeather>;
+  // weatherData$!: Observable<IWeather>;
+  // weather: any;
 
   weatherData!: IWeather;
   forecastData!: IForecast;
+
   routeSub!: Subscription;
   weatherSub!: Subscription;
   forecastSub!: Subscription;
@@ -37,24 +38,6 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // this.weatherData$ = this.route.params.pipe(
-    //   // 1. Get the cityName parameter from the route params
-    //   // Use the map operator to transform the params object
-    //   map(params => params["cityName"]),
-    //   // 2. Check if the parameter has some value
-    //   // Use the filter operator to check if we have a valid-value(use the double !!)
-    //   filter(name => !!name),
-    //   // tap “side effect” in observable pipeline
-    //   tap(() => {
-    //     this.loading = true;
-    //   }),
-    //   // 3. Call weather-service function for this value
-    //   // Use a concatMap operator to append or concatenate service function (which also is an observable)
-    //   concatMap(name => this.weatherServices.getWeatherByCity(name)),
-    //   tap(()=>{
-    //     this.loading = false
-    //   })
-    // );
     this.routeSub = this.activatedRoute.params.subscribe((params: Params) => {
       console.log(params);
       this.countryCode = params['countryCode'];
@@ -65,11 +48,6 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
         this.countryName = Country.getCountryByCode(this.countryCode)?.name;
       }
     });
-
-    // date converting
-    // let day = new Date(1646647200 * 1000);
-    // console.log('convert date: ', day.toLocaleString().split(',')[0]);
-    // console.log('convert day: ', day.toLocaleString('en', { weekday: 'long' }));
   }
 
   getWeatherData(cityName: string): void {
@@ -81,7 +59,6 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
         this.lon = this.weatherData.coord.lon;
         // console.log('weatherData: ', this.weatherData);
         // console.log('Country: ', Country.getCountryByCode(this.weatherData.sys.country))
-
         // console.log('this.country: ', this.countryName);
         this.getForecast(this.lat, this.lon);
       });
@@ -111,7 +88,7 @@ export class WeatherReportComponent implements OnInit, OnDestroy {
         this.weatherServices
           .getWeatherByCoord(this.lat, this.lon)
           .subscribe((data) => {
-            this.weather = data;
+            // this.weather = data;
           });
       });
     }
